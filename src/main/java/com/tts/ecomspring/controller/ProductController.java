@@ -18,18 +18,18 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/product/{id}")
-    public String show(@PathVariable Long id, Model model){
+    public String show(@PathVariable int id, Model model){
         Product product = productService.findById(id);
         model.addAttribute(product);
         return "product";
     }
 
-    //TODO: Either implement admin controls or remove these methods.
+    // TODO: Either implement admin controls or remote these methods
 
-    @RequestMapping(value = "/product", method = {RequestMethod.POST,
-    RequestMethod.PUT})
-    public String createOrUpdate(@Valid Product product) {
+    @RequestMapping(value = "/product", method = {RequestMethod.POST, RequestMethod.PUT})
+    public String createOrUpdate(@Valid Product product){
         productService.save(product);
         return "redirect:/product/" + product.getId();
     }
+
 }

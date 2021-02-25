@@ -1,5 +1,6 @@
 package com.tts.ecomspring.controller;
 
+import com.tts.ecomspring.model.User;
 import com.tts.ecomspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,19 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
-public class AuthenticationController {
+class AuthenticationController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/login")
+    @GetMapping("/signin")
     public String login() {
-        return "login";
+        return "signin";
     }
 
-    @PostMapping(value = "/signin")
-    public String signin(@Valid User user, @RequestParam String submit,
-                         BindingResult bindingResult, HttpServletRequest request)
-            throws ServletException {
+    @PostMapping("/signin")
+    public String signup(@Valid User user, @RequestParam String submit, BindingResult bindingResult,
+                         HttpServletRequest request) throws ServletException {
         String password = user.getPassword();
         if (submit.equals("up")) {
             if (userService.findByUsername(user.getUsername()) == null) {

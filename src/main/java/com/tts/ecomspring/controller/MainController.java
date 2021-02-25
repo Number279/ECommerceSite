@@ -18,39 +18,40 @@ import java.util.List;
 @Controller
 @ControllerAdvice
 public class MainController {
+
     @Autowired
     ProductService productService;
 
-    @GetMapping(value = "/")
-    public String main() {
+    @GetMapping
+    public String main(){
         return "main";
     }
 
     @ModelAttribute("products")
-    public List<Product> products() {
-        return productService.findAll()
+    public List<Product> products(){
+        return productService.findAll();
     }
 
-    public List<String> categories() {
+    @ModelAttribute("categories")
+    public List<String> categories(){
         return productService.findDistinctCategories();
     }
 
     @ModelAttribute("brands")
-    public List<String> brands() {
+    public List<String> brands(){
         return productService.findDistinctBrands();
     }
 
     @GetMapping("/filter")
-    public String filter(@RequestParam(required = false) String category,
-                         @RequestParam(required = false) String brand, Model model) {
-        List<Product> filtered =
-                productService.findByBrandOrCategory(brand, category);
-        model.addAttribute("products", filtered); //overrides the @ModelAttribute above
+    public String filter(@RequestParam(required=false) String category,
+                         @RequestParam(required=false)String brand, Model model){
+        List<Product> filtered = productService.findByBrandAndOrCategory(brand, category);
+        model.addAttribute("products", filtered);
         return "main";
     }
 
     @GetMapping("/about")
-    public String about() {
+    public String about(){
         return "about";
     }
 }
