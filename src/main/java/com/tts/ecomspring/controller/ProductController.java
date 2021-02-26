@@ -32,4 +32,12 @@ public class ProductController {
         return "redirect:/product/" + product.getId();
     }
 
+    @GetMapping("/addProduct")
+    public String addProduct(Model model){
+        Product newProduct = new Product();
+        model.addAttribute("product", newProduct);
+        return "addProduct";
+    }
+
+
 }
