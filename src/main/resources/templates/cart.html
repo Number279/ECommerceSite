@@ -3,10 +3,27 @@
 <head th:replace="fragments/fragments :: head"></head>
 <body>
 <div th:replace="fragments/fragments :: navbar"></div>
-<div class="container">
+<!--<div class="container">-->
 <!--                        <h4 th:text="${user.username}" style="margin-bottom: 0;"></h4>-->
-                        <h5 th:text="Cart"></h5>
-    <h3 th:text="${loggedInUser.cart}"></h3>
+<!--    <h3 th:text="${loggedInUser.cart}"></h3>-->
+<!--    <ul>-->
+        <div class="container">
+            <h5 th:text="Cart"></h5>
+            <div class="row">
+                <div class="card col-md-3 small-product-card" th:each="product:${cart}">
+<!--        <li th:each="product:${cart}">-->
+                    <p>Name of Product:</p>
+            <p th:text="${product.key.name}"></p>
+                    <p>Price of Product:</p>
+            <p th:text="${product.key.price}"></p>
+                    <p>Number of items to buy:</p>
+            <p th:text="${product.value}"></p>
+            <img th:src="@{${product.key.image}}"/>
+                </div>
+            </div>
+        </div>
+<!--        </li>-->
+<!--    </ul>-->
 
 <footer th:replace="fragments/fragments :: footer"></footer>
 </body>
