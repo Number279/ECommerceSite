@@ -68,6 +68,7 @@ public class CartController {
         return "cart";
     }
 
+
     private void setQuantity(Product p, int quantity) {
         if (quantity > 0)
             cart().put(p, quantity);
