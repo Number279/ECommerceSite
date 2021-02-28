@@ -22,10 +22,19 @@
             <p th:text="${product.value}"></p>
 
             <img th:src="@{${product.key.image}}"/>
-                    <form class="form-cart" th:method="delete">
-<!--                    <input type="hidden" name="_method" value="delete" />-->
-                    <button class="btn btn-lg btn-warning" value= ${product.key.id} name="delete" type="submit">Remove from Cart</button>
-                    </form>
+<!--                    <form th:action="@{/cart/remove}" th:object="${product}" method="post">-->
+<!--                        <input type="hidden" th:field="*{id}"/>-->
+<!--                        <button type="submit" class="btn btn-primary">Remove From Cart</button>-->
+<!--                    </form>-->
+<!--                    <td>-->
+<!--                        <a th:href="@{'/cart/doDelete/' + ${product.key.id}}">-->
+<!--                            <span>Delete</span>-->
+<!--                        </a>-->
+<!--                    </td>-->
+<!--                    <form class="form-cart" th:method="delete">-->
+<!--&lt;!&ndash;                    <input type="hidden" name="_method" value="delete" />&ndash;&gt;-->
+<!--                    <button class="btn btn-lg btn-warning" th:text=${product.key.id} name="id" type="submit">Remove from Cart</button>-->
+<!--                    </form>-->
 <!--                    <form action="#" th:action="@{'/cart/delete/{id}'(id=${product.id})}" th:method="delete" >-->
 <!--                        <button type="submit" class="btn">-->
 <!--                            Delete-->

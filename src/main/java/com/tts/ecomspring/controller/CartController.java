@@ -61,12 +61,19 @@ public class CartController {
         return "cart";
     }
 
-    @DeleteMapping("/cart")
+    @PostMapping("/cart/remove")
     public String removeFromCart(@RequestParam long id) {
         Product p = productService.findById(id);
         setQuantity(p, 0);
         return "cart";
     }
+
+//    @RequestMapping(value = "/cart/doDelete", method = RequestMethod.POST)
+//    public String removeFromCart(@PathVariable long id) {
+//        Product p = productService.findById(id);
+//        setQuantity(p, 0);
+//        return "cart";
+//    }
 
 
     private void setQuantity(Product p, int quantity) {
