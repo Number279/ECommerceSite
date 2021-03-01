@@ -16,15 +16,25 @@
 <!--        <li th:each="product:${cart}">-->
 <!--                    <p>Product Id:</p>-->
 <!--                    <p th:text="${product.key.id}"></p>-->
-                    <p>Name of Product:</p>
+                    <h4>Name of Product:</h4>
             <p th:text="${product.key.name}"></p>
-                    <p>Price of Product:</p>
+                    <h4>Price of Product:</h4>
             <p th:text="${product.key.price}"></p>
-                    <p>Number of items to buy:</p>
+                    <h4>Number of items to buy:</h4>
             <p th:text="${product.value}"></p>
 
             <img th:src="@{${product.key.image}}"/>
-                    <a th:href="@{/product/{id}(id=${product.key.id})}"><button class="btn btn-warning">Remove From Cart</button></a>
+                    <form action="#" th:action="@{/cart/{id}(id=${product.key.id})}" th:method="post" >
+                        <input type="hidden" name="_method" value="post" />
+                        <button type="submit" id="submitButton"  class="btn btn-warning">Remove from Cart </button>
+                    </form>
+
+
+                    <!--                                        <form th:action="@{/cart/{id}(id=${product.key.id})}" th:object="${product}" th:method="delete">-->
+<!--                        <input type="hidden" th:field="*{product.key.id}"/>-->
+<!--                        <a th:href="@{/cart/{id}(id=${product.key.id})}" th:object="${product}" th:method="delete">Remove from Cart</a>-->
+<!--                    </form>-->
+<!--                    <a th:href="@{/product/{id}(id=${product.key.id})}"><button class="btn btn-warning">Remove From Cart</button></a>-->
 <!--                    <form th:action="@{/cart/remove}" th:object="${product}" method="post">-->
 <!--                        <input type="hidden" th:field="*{id}"/>-->
 <!--                        <button type="submit" class="btn btn-primary">Remove From Cart</button>-->

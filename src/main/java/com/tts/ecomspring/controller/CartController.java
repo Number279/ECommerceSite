@@ -61,8 +61,8 @@ public class CartController {
         return "cart";
     }
 
-    @PostMapping("/cart/remove")
-    public String removeFromCart(@RequestParam long id) {
+    @PostMapping("/cart/{id}")
+    public String removeFromCart(@PathVariable long id) {
         Product p = productService.findById(id);
         setQuantity(p, 0);
         return "cart";
