@@ -22,8 +22,8 @@
             <p th:text="${product.key.price}"></p>
                     <h4>Number of items to buy:</h4>
             <p th:text="${product.value}"></p>
-
             <img th:src="@{${product.key.image}}"/>
+                    <br />
                     <form action="#" th:action="@{/cart/{id}(id=${product.key.id})}" th:method="post" >
                         <input type="hidden" name="_method" value="post" />
                         <button type="submit" id="submitButton"  class="btn btn-warning">Remove from Cart </button>
@@ -59,6 +59,7 @@
         </div>
 <!--        </li>-->
 <!--    </ul>-->
+    <br />
     <div class="container">
     <a id="checkout-button"  class="btn" href="/checkout"><button class="btn btn-success">Checkout</button></a>
     </div>
