@@ -18,7 +18,7 @@
             <div class="card col-md-3 small-product-card" th:each="product:${products}">
                 <a th:href="@{/product/{id}(id=${product.getId()})}"><img th:alt="${product.name}"
                                                                           th:src="@{${product.image}}"
-                                                                          class="card-img"/></a>
+                                                                          class="card-img width"/></a>
                 <div class="card-body">
                     <div class="card-title">
                         <h4 th:text="${product.getBrand()}"></h4>
